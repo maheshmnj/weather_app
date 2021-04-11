@@ -8,21 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isNight = false
     var body: some View {
         ZStack(content: {
-            LinearGradient(gradient: Gradient(colors: [Color.blue,Color("LightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            LinearGradient(gradient: Gradient(colors: [isNight ? .black: .blue, isNight ? .gray: Color("LightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack(
                 content: {
                     Text("Cupertino, CA").font(.system(size: 32)).foregroundColor(.white)
-                    Image(systemName: "cloud.sun.fill"
+                    Image(systemName: isNight ? "moon.stars.fill" : "cloud.sun.fill"
                 ).renderingMode(.original)
                     .resizable().aspectRatio( contentMode: .fit)
-                    .frame(width: 180, height: 180)
+                    .frame(width: isNight ? 150: 180, height: isNight ? 150 : 180)
                     Text("76°").font(.system(size: 70,weight:.medium)).foregroundColor(.white)
                     WeekView()
                     Spacer()
                     Button{
-                        print("Button tapped")
+                        isNight.toggle()
                     } label:{
                         Text("Change Date Time").frame(width:280, height:50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color.white).font(.system(size: 20,weight:.bold,design:.default)).cornerRadius(10.0)
                     }
