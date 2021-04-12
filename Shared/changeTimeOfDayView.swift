@@ -25,7 +25,7 @@ struct ChangeTimeOfDayView:View{
                     isNight = false
                     isSheetShown = false
                 } label:{
-                    WeatherButton(label: "Light Mode", foregroundColor: .white, backgroundColor: .gray)
+                    WeatherButton(label: "Light Mode", foregroundColor: .white, backgroundColor: .blue)
                 }.padding(.vertical,10)
             })
         })
