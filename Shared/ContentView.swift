@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isNight = false
+    @State private var isNight:Bool = false
+    @State private var isSheetShown:Bool = false
+    
     var body: some View {
         ZStack(content: {
             LinearGradient(gradient: Gradient(colors: [isNight ? .black: .blue, isNight ? .gray: Color("LightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -23,13 +25,24 @@ struct ContentView: View {
                     WeekView()
                     Spacer()
                     Button{
-                        isNight.toggle()
+                        isSheetShown = true
                     } label:{
-                        Text("Change Date Time").frame(width:280, height:50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(Color.white).font(.system(size: 20,weight:.bold,design:.default)).cornerRadius(10.0)
+                        WeatherButton(label: "Change Time of Day", foregroundColor: .blue, backgroundColor: .white)
                     }
                     Spacer()
                 })
-        })
+        }).sheet(isPresented: $isSheetShown, content: {
+            ChangeTimeOfDayView(isNight: $isNight,isSheetShown:$isSheetShown)
+         })
+    }
+}
+
+struct WeatherButton:View{
+    var label:String
+    var foregroundColor:Color
+    var backgroundColor:Color
+    var body: some View{
+        Text("\(label)").foregroundColor(foregroundColor) .frame(width:280, height:50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(backgroundColor).font(.system(size: 20,weight:.bold,design:.default)).cornerRadius(10.0)
     }
 }
 

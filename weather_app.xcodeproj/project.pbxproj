@@ -13,6 +13,8 @@
 		3D147C8B26231F9600EA3914 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D147C7626231F9500EA3914 /* ContentView.swift */; };
 		3D147C8C26231F9600EA3914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D147C7726231F9600EA3914 /* Assets.xcassets */; };
 		3D147C8D26231F9600EA3914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D147C7726231F9600EA3914 /* Assets.xcassets */; };
+		3DF7A0932623E440001AC483 /* changeTimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7A0922623E440001AC483 /* changeTimeOfDayView.swift */; };
+		3DF7A0962623E526001AC483 /* changeTimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7A0922623E440001AC483 /* changeTimeOfDayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		3D147C8426231F9600EA3914 /* weather_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D147C8626231F9600EA3914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D147C8726231F9600EA3914 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		3DF7A0922623E440001AC483 /* changeTimeOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTimeOfDayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				3D147C7526231F9500EA3914 /* weather_appApp.swift */,
+				3DF7A0922623E440001AC483 /* changeTimeOfDayView.swift */,
 				3D147C7626231F9500EA3914 /* ContentView.swift */,
 				3D147C7726231F9600EA3914 /* Assets.xcassets */,
 			);
@@ -187,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF7A0932623E440001AC483 /* changeTimeOfDayView.swift in Sources */,
 				3D147C8A26231F9600EA3914 /* ContentView.swift in Sources */,
 				3D147C8826231F9600EA3914 /* weather_appApp.swift in Sources */,
 			);
@@ -196,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF7A0962623E526001AC483 /* changeTimeOfDayView.swift in Sources */,
 				3D147C8B26231F9600EA3914 /* ContentView.swift in Sources */,
 				3D147C8926231F9600EA3914 /* weather_appApp.swift in Sources */,
 			);
