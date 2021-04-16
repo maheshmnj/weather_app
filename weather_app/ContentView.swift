@@ -10,18 +10,19 @@ import SwiftUI
 struct ContentView: View {
     @State private var isNight:Bool = false
     @State private var isSheetShown:Bool = false
-    
+    @State private var weatherModel:WeatheModel = WeatheModel("Cupertino, CA", ApiMain(temp: 76.0), [ApiWeather(description: "sample")])
+
     var body: some View {
         ZStack(content: {
             LinearGradient(gradient: Gradient(colors: [isNight ? .black: .blue, isNight ? .gray: Color("LightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack(
                 content: {
-                    Text("Cupertino, CA").font(.system(size: 32)).foregroundColor(.white)
-                    Image(systemName: isNight ? "moon.stars.fill" : "cloud.sun.fill"
+                    Text("\(weatherModel.name)").font(.system(size: 32)).foregroundColor(.white)
+              Image(systemName: isNight ? "moon.stars.fill" : "cloud.sun.fill"
                 ).renderingMode(.original)
                     .resizable().aspectRatio( contentMode: .fit)
                     .frame(width: isNight ? 150: 180, height: isNight ? 150 : 180)
-                    Text("76°").font(.system(size: 70,weight:.medium)).foregroundColor(.white)
+                    Text(String(format: "%.1f°",weatherModel.main.temp) ).font(.system(size: 70,weight:.medium)).foregroundColor(.white)
                     WeekView()
                     Spacer()
                     Button{
@@ -34,6 +35,14 @@ struct ContentView: View {
         }).sheet(isPresented: $isSheetShown, content: {
             ChangeTimeOfDayView(isNight: $isNight,isSheetShown:$isSheetShown)
          })
+        .onAppear{
+                   print("making api call")
+                       Api().getWeatherInfo(cityName: "bangalore") { (weatherModel) in
+                           print(weatherModel.name)
+                        self.weatherModel = weatherModel
+                       }
+       
+                   }
     }
 }
 
@@ -78,6 +87,8 @@ struct WeekView: View{
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
 }
